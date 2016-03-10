@@ -7,8 +7,8 @@ public class Main {
 		
 		Producer p1 = new Producer(q);
 		Producer p2 = new Producer(q);
-		Consumer c1 = new Consumer(q);
-		Consumer c2 = new Consumer(q);
+		Thread c1 = new Thread(new Consumer(q));
+		Thread c2 = new Thread(new Consumer(q));
 		
 		p1.start();
 		p2.start();

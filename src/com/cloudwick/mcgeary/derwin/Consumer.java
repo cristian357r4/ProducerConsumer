@@ -1,6 +1,6 @@
 package com.cloudwick.mcgeary.derwin;
 
-public class Consumer extends Thread {
+public class Consumer implements Runnable {
 	private MyQueue queue;
 	
 	public Consumer(MyQueue q) {
