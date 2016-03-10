@@ -1,18 +1,25 @@
 package com.cloudwick.mcgeary.derwin;
 
 // This is intended to implement a shared, thread-friendly, LIFO object
-// A British-style queue (Russian queues are actually doubly-linked lists)
 // I referenced http://www.cs.bu.edu/teaching/c/queue/array/types.html
 
 public class MyQueue {
-	String[] messages;
-	int count;
-	int front;
+	private String[] messages;
+	private int count;
+	private int front;
 	
-	public MyQueue(int n) {
-		this.messages = new String[n];
+	public MyQueue(int size) {
+		this.messages = new String[size];
 		this.count = 0;
 		this.front = 0;
+	}
+	
+	public boolean isEmpty() {
+		return (count==0);
+	}
+	
+	public boolean isFull() {
+		return (count==messages.length);
 	}
 	
 	public synchronized String take() {
