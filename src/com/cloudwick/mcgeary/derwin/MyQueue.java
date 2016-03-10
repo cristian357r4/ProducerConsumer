@@ -16,7 +16,7 @@ public class MyQueue {
 	}
 	
 	public synchronized String take() {
-		while(!(count>0)) {
+		while(!(count>0)) { // if we're empty, wait
 			try {
 				wait();
 			} catch (InterruptedException e) {}
@@ -24,6 +24,7 @@ public class MyQueue {
 		
 		count--; // one less queue item
 		front++; // the front is now the next array slot
+		front = front % messages.length; 
 		notifyAll(); // tell the world
 		return messages[front]; // and the calling function
 	}

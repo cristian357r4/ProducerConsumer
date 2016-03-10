@@ -1,14 +1,14 @@
 package com.cloudwick.mcgeary.derwin;
 
 public class Consumer extends Thread {
-	private Box box;
+	private MyQueue queue;
 	
-	public Consumer(Box box) {
-		this.box = box;
+	public Consumer(MyQueue q) {
+		this.queue = q;
 	}
 	
 	public void run() {
-		for(String message = box.take(); !message.equals("DONE"); message = box.take()) {
+		for(String message = queue.take(); !message.equals("DONE"); message = queue.take()) {
 			System.out.println(message);
 		}
 	}

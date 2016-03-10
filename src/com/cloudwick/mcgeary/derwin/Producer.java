@@ -1,19 +1,20 @@
 package com.cloudwick.mcgeary.derwin;
 
 public class Producer extends Thread {
-	private Box box;
+	private MyQueue queue;
 	
-	public Producer(Box box) {
-		this.box = box;
+	public Producer(MyQueue queue) {
+		this.queue = queue;
 	}
 	
 	public void run() {
-		String[] msgs = {"Romeo","Romeo","wherefore", "art", "thou?"};
+		String[] msgs = {"Shall", "I", "compare", "thee", "to", "a", "Summer's", "Day?",
+						"Thou", "art", "more","lovely","and","more","temperate"}; // >10 words to test our queue out
 		
 		for(String message : msgs) {
-			box.put(message);
+			queue.put(message);
 		}
 		
-		box.put("DONE");
+		queue.put("DONE");
 	}
 }
