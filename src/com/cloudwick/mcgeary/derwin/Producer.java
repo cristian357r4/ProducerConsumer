@@ -1,9 +1,10 @@
 package com.cloudwick.mcgeary.derwin;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class Producer extends Thread {
-	private MyQueue queue;
+	private ArrayBlockingQueue queue;
 	
-	public Producer(MyQueue queue) {
+	public Producer(ArrayBlockingQueue queue) {
 		this.queue = queue;
 	}
 	
@@ -12,9 +13,13 @@ public class Producer extends Thread {
 						"Thou", "art", "more","lovely","and","more","temperate"}; // >10 words to test our queue out
 		
 		for(String message : msgs) {
+		    try {
 			queue.put(message);
+		    } catch (InterruptedException e) {}
 		}
-		
-		queue.put("DONE");
+
+		try {
+		    queue.put("DONE");
+		} catch (InterruptedException e) {}
 	}
 }

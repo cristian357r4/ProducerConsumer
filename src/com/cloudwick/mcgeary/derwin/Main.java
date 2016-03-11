@@ -1,10 +1,13 @@
+
+
 package com.cloudwick.mcgeary.derwin;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class Main {
 	
 	public static void main(String[] args) {
-		MyQueue q = new MyQueue(10);		
-		
+	    ArrayBlockingQueue<String> q = new ArrayBlockingQueue<String>(10);		    
+	    
 		Producer p1 = new Producer(q);
 		Producer p2 = new Producer(q);
 		Thread c1 = new Thread(new Consumer(q));
