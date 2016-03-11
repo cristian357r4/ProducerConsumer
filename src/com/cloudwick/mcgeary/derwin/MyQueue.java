@@ -30,10 +30,11 @@ public class MyQueue {
 		}
 		
 		count--; // one less queue item
+		int requested = front;
 		front++; // the front is now the next array slot
 		front = front % messages.length; 
 		notifyAll(); // tell the world
-		return messages[front]; // and the calling function
+		return messages[requested]; // and the calling function
 	}
 	
 	public void put(String newMessage) {
